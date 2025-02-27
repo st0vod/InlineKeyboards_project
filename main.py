@@ -9,8 +9,9 @@ from configs.config import load_config, Config
 from keyboards.set_bot_menu import set_main_menu
 from handlers.command_handlers import router_commands_handler
 
+logging.basicConfig(level=logging.DEBUG,
+                    format='[%(asctime)s] #%(levelname)-8s %(filename)s: %(lineno)d - %(name)s - %(message)s')
 logger = logging.getLogger()
-logging.basicConfig(level='INFO')
 
 
 async def main():
