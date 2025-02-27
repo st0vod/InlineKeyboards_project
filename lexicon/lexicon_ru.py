@@ -1,0 +1,1 @@
+LEXICON_RU_COMMANDS = {'/start': 'Бот запущен...'}
