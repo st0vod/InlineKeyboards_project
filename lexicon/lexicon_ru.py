@@ -1,4 +1,5 @@
-LEXICON_RU_MENU = {'/start': 'Это инлайн-кнопка с параметром "url"'}
+LEXICON_RU_MENU = {'/url': 'Это инлайн-кнопка с параметром "url"',
+                   '/callback': 'Это инлайн-кнопка с параметром "callback_data"'}
 
 group_name = 'aiogram_stepik_course'
 user_id = 867194476
