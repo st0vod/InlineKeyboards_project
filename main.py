@@ -7,7 +7,7 @@ from aiogram.client.default import DefaultBotProperties
 
 from configs.config import load_config, Config
 from keyboards.set_bot_menu import set_main_menu
-from handlers.command_handlers import router_commands_handler
+from handlers import *
 
 logging.basicConfig(level=logging.DEBUG,
                     format='[%(asctime)s] #%(levelname)-8s %(filename)s: %(lineno)d - %(name)s - %(message)s')
@@ -20,10 +20,14 @@ async def main():
               default=DefaultBotProperties(parse_mode=ParseMode.HTML))
     dp = Dispatcher()
     dp.include_router(router_commands_handler)
+    dp.include_router(router_query)
 
     await set_main_menu(bot)
     await dp.start_polling(bot)
 
 
 if __name__ == '__main__':
-    asyncio.run(main())
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        pass

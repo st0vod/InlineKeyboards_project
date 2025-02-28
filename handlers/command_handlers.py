@@ -5,7 +5,7 @@ from aiogram.filters import Command, CommandStart
 from aiogram.types import Message
 
 from lexicon.lexicon_ru import LEXICON_RU_MENU
-from keyboards.inline_keyboard import keyboard_inline, keyboard_inline_callback
+from keyboards.inline_keyboard import keyboard_inline, keyboard_inline_callback, kb_builder
 from functools import wraps
 
 logger = logging.getLogger(name=__name__)
@@ -36,3 +36,14 @@ async def process_url_command(message: Message):
 async def process_callback_command(message: Message):
     await message.answer(text=LEXICON_RU_MENU[message.text],
                          reply_markup=keyboard_inline_callback)
+
+@router_commands_handler.message(Command('builder'))
+async def process_builder_command(message: Message):
+    await message.answer(text=LEXICON_RU_MENU[message.text],
+                         reply_markup=kb_builder)
+
+@router_commands_handler.message()
+@id_info_decorator
+async def process_other_messages(message: Message):
+    await message.answer(text='Не возможно обработать данное сообщение')
+

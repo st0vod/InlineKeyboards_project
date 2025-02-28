@@ -1,4 +1,5 @@
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from aiogram.utils.keyboard import InlineKeyboardBuilder
 from lexicon.lexicon_ru import LEXICON_RU_INLINEBUTTONS
 
 # ----- инлайн клавиатура с атрибутом url
@@ -20,3 +21,13 @@ keyboard_inline_callback = InlineKeyboardMarkup(
     inline_keyboard=[[callback_button_1],
                      [callback_button_2]]
 )
+
+# ----- билдер Inline клавиатуры
+inline_kb_builder = InlineKeyboardBuilder()
+
+buttons: list[InlineKeyboardButton] = [InlineKeyboardButton(text=f'{i}', callback_data=f'{i}') for i in range(1, 11)]
+
+inline_kb_builder.add(*buttons)
+inline_kb_builder.adjust(5, repeat=True)
+
+kb_builder = inline_kb_builder.as_markup(resize_keybord=True)
